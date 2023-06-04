@@ -37,11 +37,17 @@ function App() {
       task.id === id ? {...task, reminder: !task.reminder} : task
     ))
   }
+
+  const taskAddition = (newtask) => {
+    const id = tasks.length + 1;
+    const temptask = {id, ...newtask };
+    setTasks([...tasks, temptask]);
+  }
   
   return (
     <div className='main'>
       <Header color='green' text='Add'/>
-      <AddTask/>
+      <AddTask originalTask = {tasks} onAddition={taskAddition}/>
       {tasks.length>0 ? <TaskList tasks = {tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'No Task Added'}
     </div>
   )
