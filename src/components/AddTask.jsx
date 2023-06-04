@@ -10,10 +10,10 @@ const AddTask = ({originalTask, onAddition}) => {
     });
 
     const onSubmit = () => {
-        // if (!data.text || !data.day){
-        //     alert("Please fill all fields")
-        //     return
-        // }
+        if (!data.text || !data.day){
+            alert("Please fill all fields")
+            return
+        }
         onAddition(data);
     }
     return(
@@ -22,10 +22,10 @@ const AddTask = ({originalTask, onAddition}) => {
                 <label htmlFor="">Task</label>
                 <input type="text" placeholder="Add a task" onChange={(e)=>{
                     setData({...data, text: e.target.value} )
-                }} required/>
+                }}/>
 
                 <label htmlFor="">Day & Date</label>
-                <input type="text" id="date" placeholder="Add day & date" required onChange={(e)=>{
+                <input type="text" id="date" placeholder="Add day & date" onChange={(e)=>{
                     setData({...data, day: e.target.value})
                 }}/>
 
